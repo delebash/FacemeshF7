@@ -1,0 +1,13 @@
+{
+  "appId": "com.facemesh.app",
+  "appName": "facemeshf7",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "src",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">facemeshf7</string>
+    <string name="title_activity_main">facemeshf7</string>
+    <string name="package_name">com.facemesh.app</string>
+    <string name="custom_url_scheme">com.facemesh.app</string>
+</resources>
