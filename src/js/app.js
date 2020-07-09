@@ -14,7 +14,7 @@ import routes from './routes.js';
 // Import main app component
 import App from '../app.f7.html';
 
-var app = new Framework7({
+let app = new Framework7({
   root: '#app', // App root element
   component: App, // App main component
 

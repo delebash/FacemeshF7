@@ -1,10 +1,55 @@
 <template>
     <div class="page" data-name="settings">
         <div class="page-content">
-            Settings
+            <div class="list">
+                <ul>
+                    <!-- Open In Sheet -->
+                    <li>
+                        <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+                            <select name="mac-windows">
+                                {{#each options}}
+                                <option value={{value}} selected>{{text}}</option>
+                                {{/each}}
+                            </select>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Mac or Windows</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
 <script>
-    export default {};
+    export default {
+
+        data: async function () {
+            return {
+                options: await getCameraList()
+            };
+        },
+        // App root methods
+       async mounted () {
+       }
+    };
+
+    async function getCameraList(){
+        let cameraList = [];
+        await navigator.mediaDevices.getUserMedia({video: true})
+        let mediaDevices = await navigator.mediaDevices.enumerateDevices()
+
+        mediaDevices.forEach(mediaDevice => {
+            let camera = {}
+            if (mediaDevice.kind === 'videoinput') {
+                camera.value = mediaDevice.deviceId
+                camera.text = mediaDevice.label
+                cameraList.push(camera)
+            }
+        });
+         return  cameraList
+    }
 </script>
+

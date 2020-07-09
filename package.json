@@ -7,6 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "npm run dev",
+    "electron": "",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack.config.js",
     "build-dev": "cross-env NODE_ENV=development node ./build/build.js",
     "build-prod": "cross-env NODE_ENV=production node ./build/build.js",
@@ -25,6 +26,8 @@
     "@capacitor/cli": "^2.2.1",
     "@capacitor/core": "^2.2.1",
     "@capacitor/ios": "^2.2.1",
+    "@tensorflow-models/facemesh": "0.0.3",
+    "@tensorflow/tfjs": "^2.0.1",
     "dom7": "^2.1.5",
     "framework7": "^5.7.8",
     "framework7-icons": "^3.0.1",

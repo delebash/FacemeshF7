@@ -39,7 +39,7 @@ module.exports = {
     },
 
   },
-  devtool: env === 'production' ? 'source-map' : 'eval',
+  devtool: 'source-map',
   devServer: {
     hot: true,
     open: true,
@@ -219,3 +219,5 @@ module.exports = {
 
   ],
 };
+
+// env === 'production' ? 'source-map' : 'eval',
