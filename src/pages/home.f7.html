@@ -1,14 +1,25 @@
 <template>
     <div class="page" data-name="home">
+        <!-- Top Navbar -->
+        <div class="navbar display-flex">
+            <div class="navbar-bg"></div>
+            <div class="navbar">
+                <div class="navbar-inner justify-content-center">
+                    <a href="#" @click="onClick" class="button">Preview</a>
+                    <a href="#" @click="onClick" class="button">Start Recording</a>
+                    <a href="#" @click="onClick" class="button">Stop Recording</a>
+                </div>
+            </div>
+        </div>
         <!-- Scrollable page content-->
         <div class="page-content">
-            Home
             <div>
                 <canvas id="output"></canvas>
                 <video id="video"></video>
             </div>
         </div>
     </div>
+
 </template>
 <script>
     let model, ctx, videoWidth, videoHeight, video, canvas, currentStream,
@@ -22,8 +33,13 @@
 
 
     export default {
-        async mounted () {
-            main()
+        async mounted() {
+            // main()
+        },
+        methods: {
+            onClick: function () {
+                alert('test')
+            }
         }
     }
 

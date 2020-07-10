@@ -1,27 +1,42 @@
 <template>
     <div class="page" data-name="settings">
         <div class="page-content">
-            <div class="list">
-                <ul>
-                    <!-- Open In Sheet -->
-                    <li>
-                        <a class="item-link smart-select smart-select-init" data-open-in="sheet">
-                            <select name="mac-windows">
-                                {{#each options}}
-                                <option value={{value}} selected>{{text}}</option>
-                                {{/each}}
-                            </select>
-                            <div class="item-content">
-                                <div class="item-inner">
-                                    <div class="item-title">Mac or Windows</div>
-                                </div>
-                            </div>
+            <div class="appbar">
+                <div class="appbar-inner">
+                    <div class="center">
+                        <a href="#" class="button button-small panel-toggle display-flex" data-panel="center">
+                            <i class="f7-icons">bars</i>
                         </a>
-                    </li>
-                </ul>
+                        <a href="#" class="button button-small display-flex">
+                            <i class="f7-icons">reply_fill</i>
+                        </a>
+                        <a href="#" class="button button-small display-flex">
+                            <i class="f7-icons">forward_fill</i>
+                        </a>
+                    </div>
+
+                    <div class="list">
+                        <ul>
+                            <!-- Open In Sheet -->
+                            <li>
+                                <a class="item-link smart-select smart-select-init" data-open-in="sheet">
+                                    <select name="mac-windows">
+                                        {{#each options}}
+                                        <option value={{value}} selected>{{text}}</option>
+                                        {{/each}}
+                                    </select>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title">Mac or Windows</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </template>
 <script>
     export default {
@@ -32,11 +47,11 @@
             };
         },
         // App root methods
-       async mounted () {
-       }
+        async mounted() {
+        }
     };
 
-    async function getCameraList(){
+    async function getCameraList() {
         let cameraList = [];
         await navigator.mediaDevices.getUserMedia({video: true})
         let mediaDevices = await navigator.mediaDevices.enumerateDevices()
@@ -49,7 +64,7 @@
                 cameraList.push(camera)
             }
         });
-         return  cameraList
+        return cameraList
     }
 </script>
 
