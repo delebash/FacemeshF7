@@ -42,7 +42,7 @@
 
     async function getCameraList() {
         let cameraList = [];
-        await navigator.mediaDevices.getUserMedia({video: true})
+        //await navigator.mediaDevices.getUserMedia({video: true})
         let mediaDevices = await navigator.mediaDevices.enumerateDevices()
 
         mediaDevices.forEach(mediaDevice => {

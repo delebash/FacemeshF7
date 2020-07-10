@@ -7,18 +7,16 @@
                 <div class="navbar-inner justify-content-center">
                     <a href="#" @click="onClick" class="button">Preview</a>
                     <a href="#" @click="onClick" class="button">Start Recording</a>
-                    <a href="#" @click="onClick" class="button">Stop Recording</a>
+                    <a href="#" @click="stopMedia" class="button">Stop Recording</a>
                 </div>
             </div>
         </div>
         <!-- Scrollable page content-->
         <div class="page-content">
-            <div style="text-align: center;">
                 <div>
                     <canvas id="output"></canvas>
                     <video id="video"></video>
                 </div>
-            </div>
         </div>
     </div>
 
@@ -40,8 +38,11 @@
         },
         methods: {
             onClick: function () {
-                alert('test')
-            }
+               main()
+            },
+            stopMedia(){
+                stopMediaTracks(currentStream)
+            },
         }
     }
 
@@ -90,12 +91,14 @@
         ctx.stroke(region);
     }
 
-
     function stopMediaTracks(stream) {
         stream.getTracks().forEach(track => {
             track.stop();
         });
         video.srcObject = null
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        video=null
+
     }
 
     async function setupCamera(cameraId) {
