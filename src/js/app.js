@@ -15,7 +15,17 @@ import routes from './routes.js';
 import App from '../app.f7.html';
 
 let app = new Framework7({
-  root: '#app', // App root element
+  on: {
+    // each object key means same name event handler
+    pageInit: function (page) {
+      //console.log('Page initialized');
+      //page.$el.find('.button').toggleClass('button-active')
+      // let x = page.el.getElementsByClassName('button')
+     //$$('.button').toggleClass('button-active');
+    }
+  },
+
+root: '#app', // App root element
   component: App, // App main component
 
   name: 'FacemeshF7', // App name

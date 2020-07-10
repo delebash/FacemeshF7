@@ -5,9 +5,16 @@
             <div class="navbar-bg"></div>
             <div class="navbar">
                 <div class="navbar-inner justify-content-center">
-                    <a href="#" @click="onClick" class="button">Preview</a>
-                    <a href="#" @click="onClick" class="button">Start Recording</a>
+                    <a href="#" @click="startpreview" class="button">Preview</a>
+                    <a href="#" @click="record" class="button">Start Recording</a>
                     <a href="#" @click="stopMedia" class="button">Stop Recording</a>
+                    <!-- checkbox element -->
+                    <label class="checkbox">
+                        <!-- checkbox input -->
+                        <input type="checkbox">
+                        <!-- checkbox icon -->
+                        <i class="icon-checkbox"></i>
+                    </label>
                 </div>
             </div>
         </div>
@@ -23,26 +30,48 @@
 </template>
 <script>
     let model, ctx, videoWidth, videoHeight, video, canvas, currentStream,
-        scatterGLHasInitialized = false, scatterGL, triangulateMesh = true;
+        scatterGLHasInitialized = false, scatterGL, triangulateMesh = false;
     const VIDEO_SIZE = 500;
     import '@tensorflow/tfjs'
     // import '@tensorflow/tfjs-node-gpu';
     import * as facemesh from '@tensorflow-models/facemesh'
 
     import TRIANGULATION from '../js/triangulation'
-
+import '../css/home.css'
 
     export default {
+        touch: {
+            activeState: true,
+            activeStateElements: "a"
+        },
         async mounted() {
             // main()
         },
         methods: {
-            onClick: function () {
+            startpreview: function () {
                 main()
+            },
+            record: function () {
+                //main()
             },
             stopMedia() {
                 stopMediaTracks(currentStream)
             },
+            pauseMedia() {
+              //  pause()
+            }
+        }
+    }
+
+    function pause() {
+
+        let x = document.getElementById("pause");
+        if (x.text === "Pause Recording") {
+            x.text = "Paused";
+            currentStream.enabled = false
+        } else {
+            x.text = "Pause Recording";
+            currentStream.enabled = true
         }
     }
 
