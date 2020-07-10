@@ -13,10 +13,10 @@
         </div>
         <!-- Scrollable page content-->
         <div class="page-content">
-                <div>
-                    <canvas id="output"></canvas>
-                    <video id="video"></video>
-                </div>
+            <div>
+                <canvas id="output"></canvas>
+                <video id="video"></video>
+            </div>
         </div>
     </div>
 
@@ -38,9 +38,9 @@
         },
         methods: {
             onClick: function () {
-               main()
+                main()
             },
-            stopMedia(){
+            stopMedia() {
                 stopMediaTracks(currentStream)
             },
         }
@@ -71,6 +71,7 @@
     }
 
     async function cameraChange(cameraId) {
+
         if (typeof currentStream !== 'undefined') {
             stopMediaTracks(currentStream);
             await setupCamera(cameraId);
@@ -78,6 +79,7 @@
     }
 
     function drawPath(ctx, points, closePath) {
+
         const region = new Path2D();
         region.moveTo(points[0][0], points[0][1]);
         for (let i = 1; i < points.length; i++) {
@@ -92,16 +94,17 @@
     }
 
     function stopMediaTracks(stream) {
+
         stream.getTracks().forEach(track => {
             track.stop();
         });
         video.srcObject = null
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        video=null
-
+        video = null
     }
 
     async function setupCamera(cameraId) {
+
         video = document.getElementById('video');
 
         const stream = await navigator.mediaDevices.getUserMedia({
